@@ -15,9 +15,17 @@ public class GameManager : MonoBehaviour
 
     public Tile[] tiles;
 
+
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         goldDisplay.text = gold.ToString();
+
+        
 
         if (Input.GetMouseButtonDown(0) && buildingToPlace != null)
         {
@@ -58,12 +66,5 @@ public class GameManager : MonoBehaviour
             buildingToPlace = building;
             grid.SetActive(true);
         }
-    }
-    public void Setfire(Fuego fire)
-    {
-        customCursor.gameObject.SetActive(true);
-        customCursor.GetComponent<SpriteRenderer>().sprite = fire.GetComponent<SpriteRenderer>().sprite;
-        Cursor.visible = false;
-      
     }
 }
