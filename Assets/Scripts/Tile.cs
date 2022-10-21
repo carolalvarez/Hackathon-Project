@@ -16,9 +16,8 @@ public class Tile : MonoBehaviour
     }
     private void Update()
     {
-        if(isOccupied==true)
-        {
-
-        }
+        if (isOccupied == true)
+            rend.color = redColor; 
+        else rend.color = greenColor;
     }
 }
