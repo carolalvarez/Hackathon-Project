@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Text goldDisplay;
 
     private Building buildingToPlace;
+    
     public GameObject grid;
     public CustomCursor customCursor;
 
@@ -57,5 +58,12 @@ public class GameManager : MonoBehaviour
             buildingToPlace = building;
             grid.SetActive(true);
         }
+    }
+    public void Setfire(Fuego fire)
+    {
+        customCursor.gameObject.SetActive(true);
+        customCursor.GetComponent<SpriteRenderer>().sprite = fire.GetComponent<SpriteRenderer>().sprite;
+        Cursor.visible = false;
+      
     }
 }
