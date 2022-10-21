@@ -12,10 +12,36 @@ public class GameManager : MonoBehaviour
     public GameObject grid;
     public CustomCursor customCursor;
 
+    public Tile[] tiles;
+
     private void Update()
     {
         goldDisplay.text = gold.ToString();
 
+        if (Input.GetMouseButtonDown(0) && buildingToPlace != null)
+        {
+            Tile nearestTile = null;
+            float nearestDistance = float.MaxValue;
+            foreach (Tile tile in tiles)
+            {
+                float distance = Vector2.Distance(tile.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearestTile = tile;
+                }
+            }
+
+            if(nearestTile.isOccupied == false)
+            {
+                Instantiate(buildingToPlace, nearestTile.transform.position, Quaternion.identity);
+                buildingToPlace = null;
+                nearestTile.isOccupied = true;
+                grid.SetActive(false);
+                customCursor.gameObject.SetActive(false);
+                Cursor.visible = true;
+            }
+        }
 
     }
 
