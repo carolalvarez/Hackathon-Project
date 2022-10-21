@@ -11,7 +11,7 @@ public class CasillaBosque : MonoBehaviour
     public Sprite BosqueNormal;
     public Sprite BosqueQuemado;
 
-    public ObjetoVariables recursos;
+    public float recursos;
 
     public bool destrozado;
     public bool quemandose;
@@ -52,7 +52,7 @@ public class CasillaBosque : MonoBehaviour
             //Si no funciona metodo == 1, ponemos Directo().
             if (contador <= 10 && metodo == 1)
             {
-                recursos.agua -= 19.000f;
+                recursos -= 19000f;
                 quemandose = false;
                 contador = 0;
                 alphaF = new Color(1f, 1f, 1f, 0f);
@@ -60,7 +60,7 @@ public class CasillaBosque : MonoBehaviour
             }
             else if (contador <= 10 && metodo == 2)
             {
-                recursos.gente -= 10;
+                recursos -= 10000f;
                 quemandose = false;
                 contador = 1;
                 alphaF = new Color(1f, 1f, 1f, 0f);
@@ -69,13 +69,13 @@ public class CasillaBosque : MonoBehaviour
 
             if (contador > 10 && metodo == 1)
             {
-                recursos.agua -= 38.000f;
-                recursos.gente -= 15;
+                recursos -= 28000f;
+              
                 contador = 1;
             }
             else if (contador > 10 && metodo == 2)
             {
-                recursos.gente -= 5;
+                recursos -= 10000f;
                 quemandose = false;
                 contador = 0;
                 alphaF = new Color(1f, 1f, 1f, 0f);
